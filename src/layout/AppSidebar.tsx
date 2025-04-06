@@ -8,7 +8,6 @@ import {
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
-  ListIcon,
   PageIcon,
   PieChartIcon,
   PlugInIcon,
@@ -26,37 +25,44 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <GridIcon />,
-    name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
-  },
-  {
-    icon: <CalenderIcon />,
-    name: "Calendar",
-    path: "/calendar",
-  },
-  {
-    icon: <UserCircleIcon />,
-    name: "User Profile",
+    name: "Inbox",
+    icon: <PlugInIcon />,
     path: "/profile",
   },
   {
-    name: "Forms",
-    icon: <ListIcon />,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
+    name: "Create Niche",
+    icon: <PlugInIcon />,
+    path: "/create-niche",
   },
   {
-    name: "Tables",
+    name: "Connect Social Media",
+    icon: <PlugInIcon />,
+    path: "/connect-social-media",
+  },
+  {
+    name: "Content Research",
+    icon: <BoxCubeIcon />,
+    path: "/content-research",
+  },
+  {
+    name: "Create future posts",
+    icon: <CalenderIcon />,
+    path: "/create-future-posts",
+  },
+  {
+    name: "Create instant posts",
     icon: <TableIcon />,
-    subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
+    path: "/create-instant-posts",
   },
   {
-    name: "Pages",
+    name: "My Researched Content",
     icon: <PageIcon />,
-    subItems: [
-      { name: "Blank Page", path: "/blank", pro: false },
-      { name: "404 Error", path: "/error-404", pro: false },
-    ],
+    path: "/my-researched-content",
+  },
+  {
+    name: "My Scheduled Posts",
+    icon: <GridIcon />,
+    path: "/my-scheduled-posts",
   },
 ];
 
@@ -302,33 +308,7 @@ const AppSidebar: React.FC = () => {
           !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
         }`}
       >
-        <Link to="/">
-          {isExpanded || isHovered || isMobileOpen ? (
-            <>
-              <img
-                className="dark:hidden"
-                src="/images/logo/logo.svg"
-                alt="Logo"
-                width={150}
-                height={40}
-              />
-              <img
-                className="hidden dark:block"
-                src="/images/logo/logo-dark.svg"
-                alt="Logo"
-                width={150}
-                height={40}
-              />
-            </>
-          ) : (
-            <img
-              src="/images/logo/logo-icon.svg"
-              alt="Logo"
-              width={32}
-              height={32}
-            />
-          )}
-        </Link>
+        <Link to="/">xScalify</Link>
       </div>
       <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
         <nav className="mb-6">
