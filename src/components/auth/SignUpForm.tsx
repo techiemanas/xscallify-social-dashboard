@@ -1,6 +1,6 @@
-import { useActionState, useCallback, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
-import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
+import { EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Checkbox from "../form/input/Checkbox";
@@ -10,7 +10,9 @@ export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
-  const signUpFunc = useCallback(async (_, formData) => {
+  const signUpAction = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
     // Perform validation here if needed
     // Example: Check if email is valid
@@ -40,11 +42,7 @@ export default function SignUpForm() {
     }
     navigate("/");
     return result;
-  }, []);
-  const [signUpData, signUpAction, isPending] = useActionState(
-    signUpFunc,
-    null
-  );
+  };
   return (
     <div className="flex flex-col flex-1 w-full overflow-y-auto lg:w-1/2 no-scrollbar">
       {/* <div className="w-full max-w-md mx-auto mb-5 sm:pt-10">
@@ -119,7 +117,7 @@ export default function SignUpForm() {
                 </span>
               </div>
             </div> */}
-            <form action={signUpAction}>
+            <form onSubmit={signUpAction}>
               <div className="space-y-5">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div className="sm:col-span-1">
@@ -212,10 +210,7 @@ export default function SignUpForm() {
                 </div>
                 {/* <!-- Button --> */}
                 <div>
-                  <button
-                    className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
-                    disabled={isPending}
-                  >
+                  <button className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600">
                     Sign Up
                   </button>
                 </div>
