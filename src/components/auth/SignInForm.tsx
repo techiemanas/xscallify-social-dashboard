@@ -33,7 +33,7 @@ export default function SignInForm() {
         throw new Error("Login failed");
       }
       const data = await res.json();
-      login(data.access_token); // Store the token in context or local storage
+      login(data); // Store the token in context or local storage
       navigate("/"); // Redirect to the dashboard after successful login
     } catch (error) {
       console.error("Login failed:", error);

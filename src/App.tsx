@@ -20,6 +20,7 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import PrivateRoute from "./layout/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
+import CreateNiche from "./pages/CreateNiche";
 
 export default function App() {
   return (
@@ -36,6 +37,15 @@ export default function App() {
                 element={
                   <PrivateRoute>
                     <Home />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                index
+                path="/create-niche"
+                element={
+                  <PrivateRoute>
+                    <CreateNiche />
                   </PrivateRoute>
                 }
               />
