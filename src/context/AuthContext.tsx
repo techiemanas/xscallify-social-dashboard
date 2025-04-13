@@ -6,7 +6,7 @@ interface AuthContextType {
   token: string | null;
   user: LoginResponse | null;
   isAuthenticated: boolean;
-  login: (token: string) => void;
+  login: (authData: LoginResponse) => void;
   logout: () => void;
 }
 
@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.getItem("token")
   );
 
-  const [user, setUser] = useState<LoginResponse | null>();
+  const [user, setUser] = useState<LoginResponse | null>(null);
 
   const login = (authData: LoginResponse) => {
     localStorage.setItem("token", authData.access_token);
